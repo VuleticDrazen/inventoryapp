@@ -79,11 +79,29 @@
 
                             </div>
                             <div class="col-4">
+                                <label for="role_select">Role:</label>
+                                <select name="role_id" id="role_select" class="form-control @error('role_id') is-invalid @endif">
+                                    <option value="0" selected>-select a role-</option>
+                                    <option value="1">Administrator</option>
+                                    <option value="2">User</option>
+                                    <option value="3">Support Officer</option>
+                                </select>
+                                @error('role_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block btn-flat mt-4">
                                     SAVE EMPLOYEE DETAILS
                                 </button>
                             </div>
-
                         </div>
                     </form>
 

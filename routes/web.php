@@ -31,7 +31,8 @@ Route::put('/document-item/return/{document_item}', [DocumentItemController::cla
 Route::resource('/tickets', TicketController::class);
 Route::post('/equipment/{equipment}/serial-numbers', [SerialNumberController::class, 'store'])->name('serial_numbers.store');
 Route::get('/serial-numbers-by-equipment/{equipment}', [EquipmentController::class, 'serial_numbers']);
-
+Route::get('/admin_dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
+Route::get('/user_dashboard',[App\Http\Controllers\User\DashboardController::class, 'index']);
 
 Auth::routes();
 
