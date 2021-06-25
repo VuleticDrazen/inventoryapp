@@ -19,4 +19,18 @@ function fillPositions(position_id = null){
            $("#position_select").html(options);
        }
     });
+    $.ajax({
+        'url' : '/user-role/',
+        'type' : 'GET',
+        'success': (response) => {
+            let positions = response;
+            let options = '';
+            positions.forEach((position) => {
+                let selected = '';
+                if(position_id && position_id == position.id) selected = 'selected';
+                options += `<option value=\"${position.id}\" ${selected}>${position.name}</option>`;
+            });
+            $("#position_select").html(options);
+        }
+    });
 }

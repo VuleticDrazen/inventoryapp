@@ -26,9 +26,10 @@
                         </div>
                         <div class="col-6">
                             <label for="serial_number_select">Serial number:</label>
-                            <select name="serial_number_id" id="serial_number_select" class="form-control @error('serial_number_id') is-invalid @endif">
+                           <select name="serial_number_id" id="serial_number_select" class="form-control @error('serial_number_id') is-invalid @endif">--}}
                                 {{-- populated by AJAX function --}}
-                            </select>
+                           </select> --}}
+
                             @error('serial_number_id')
                             <div class="invalid-feedback">
                                 {{ $message }}

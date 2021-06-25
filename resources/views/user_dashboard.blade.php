@@ -34,18 +34,20 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Department</th>
                                         <th>Name</th>
-                                        <th>Qty. available</th>
                                         <th>Description</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($document->item as $e)
+                                    @foreach($document->items as $e)
+
                                         <tr class="clickable-row" data-href="/equipment/{{ $e->id }}" >
-                                            <td>{{ $e->id }}</td>
-                                            <td>{{ $e->name }}</td>
-                                            <td>{{ $e->available_quantity }}</td>
-                                            <td>{{ $e->short_description }}</td>
+
+                                            <td>{{ $e->equipment_id }}</td>
+                                            <td>{{ $e->equipment->equipment_category_id }}</td>
+                                            <td>{{ $e->equipment->name }}</td>
+                                            <td>{{ $e->equipment->description }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
