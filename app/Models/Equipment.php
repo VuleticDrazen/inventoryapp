@@ -15,7 +15,8 @@ class Equipment extends Model
         return $this->belongsTo(EquipmentCategory::class, 'equipment_category_id');
     }
 
-    public function serial_numbers(){
+
+    public function serial_num(){
         return $this->hasMany(SerialNumber::class);
     }
 

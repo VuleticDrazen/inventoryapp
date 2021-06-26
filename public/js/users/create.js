@@ -5,6 +5,7 @@ function fillPositions(position_id = null){
         $("#position_select").html('');
         return;
     }
+
     $.ajax({
        'url' : '/positions-by-department/'+department_id,
        'type' : 'GET',
@@ -19,18 +20,26 @@ function fillPositions(position_id = null){
            $("#position_select").html(options);
        }
     });
+
+}
+
+function fillRoles(role_id = null){
+
+    $("#role_select").html('');
+
     $.ajax({
-        'url' : '/user-role/',
+        'url' : '/roles',
         'type' : 'GET',
         'success': (response) => {
-            let positions = response;
+            let roles = response;
             let options = '';
-            positions.forEach((position) => {
+            roles.forEach((role) => {
                 let selected = '';
-                if(position_id && position_id == position.id) selected = 'selected';
-                options += `<option value=\"${position.id}\" ${selected}>${position.name}</option>`;
+                if(role_id && role_id == role.id) selected = 'selected';
+                options += `<option value=\"${role.id}\" ${selected}>${role.name}</option>`;
             });
-            $("#position_select").html(options);
+            $("#role_select").html(options);
         }
     });
+
 }

@@ -82,4 +82,5 @@ class EquipmentCategoryController extends Controller
     {
         //
     }
+
 }

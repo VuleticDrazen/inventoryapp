@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Equipment;
 use App\Models\EquipmentCategory;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
+use App\Models\Document;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,12 +27,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $equipment = Equipment::query()->available()->get();
-        $categories = EquipmentCategory::query()
-                                        ->whereHas('available_equipment')
-                                        ->with('available_equipment')
-                                        ->get();
-        $tickets = Ticket::query()->open();
-        return view('home', compact(['categories']));
+
+        $role = Auth::user()->role_id;
+
+        switch ($role) {
+            case '1':
+                $categories = EquipmentCategory::query()
+                    ->whereHas('available_equipment')
+                    ->with('available_equipment')
+                    ->get();
+                $tickets = Ticket::query()->open();
+                return view('admin_dashboard', compact(['categories']));
+                break;
+            case '2':
+                $documents = Document::query()
+                    ->where('user_id' , auth()->id())
+                    ->get();
+                $tickets = Ticket::query()->open();
+
+                return view('user_dashboard', compact(['documents']));
+
+
+            default:
+                return '/';
+                break;
+        }
+
     }
 }

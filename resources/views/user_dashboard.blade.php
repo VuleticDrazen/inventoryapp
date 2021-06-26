@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('page_title', 'Dashboard')
+@section('page_title', 'UserDashboard')
 
 @section('additional_styles')
     <style>
@@ -16,7 +16,7 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-laptop-code mr-1"></i>
-                        Available equipment by category
+                        Users equipment by documents
                     </h3>
                 </div><!-- /.card-header -->
                 <div class="card-body table-responsive">
@@ -37,18 +37,21 @@
                                         <th>Department</th>
                                         <th>Name</th>
                                         <th>Description</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($document->items as $e)
-
-                                        <tr class="clickable-row" data-href="/equipment/{{ $e->id }}" >
+                                        @if($e->return_date == null)
+                                        <tr>
 
                                             <td>{{ $e->equipment_id }}</td>
                                             <td>{{ $e->equipment->equipment_category_id }}</td>
                                             <td>{{ $e->equipment->name }}</td>
                                             <td>{{ $e->equipment->description }}</td>
+
                                         </tr>
+                                        @endif
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -66,6 +69,6 @@
 @endsection
 
 @section('additional_scripts')
-    <script src="{{ asset('/js/equipment/index.js') }}"></script>
+
 @endsection
 

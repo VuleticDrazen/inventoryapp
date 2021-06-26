@@ -82,4 +82,10 @@ class RoleController extends Controller
     {
         //
     }
+
+    public function roles()
+    {
+        return response(Role::all());
+    }
+
 }

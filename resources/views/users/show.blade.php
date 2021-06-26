@@ -41,6 +41,10 @@
                                     <td>Pozicija:</td>
                                     <td>{{ $user->position->name }}</td>
                                 </tr>
+                                <tr>
+                                    <td>Rola:</td>
+                                    <td>{{ $user->role->name }}</td>
+                                </tr>
                             </table>
                         </div>
 

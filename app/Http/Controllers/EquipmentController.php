@@ -64,7 +64,7 @@ class EquipmentController extends Controller
     public function show(Equipment $equipment)
     {
         $content_header = "Equipment details";
-        $serial_numbers = $equipment->serial_numbers;
+        $serial_numbers = $equipment->serial_num;
         $breadcrumbs = [
             ['name' => 'Home', 'link' => '/'],
             ['name' => 'Equipment list', 'link' => '/equipment'],
@@ -119,7 +119,10 @@ class EquipmentController extends Controller
 
     public function serial_numbers(Equipment $equipment)
     {
-        return $equipment->serial_numbers()->available()-get();
-
+        return $equipment->serial_num()->available()->get();
+    }
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }

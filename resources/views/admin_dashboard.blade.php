@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('page_title', 'Dashboard')
+@section('page_title', 'AdminDashboard')
 
 @section('additional_styles')
     <style>

@@ -23,6 +23,7 @@ class UserController extends Controller
             [ 'name' => 'Home', 'link' => '/' ],
             [ 'name' => 'Employees list', 'link' => '/users' ],
         ];
+
         return view('users.index', compact(['users', 'content_header', 'breadcrumbs']));
     }
 
@@ -119,4 +120,5 @@ class UserController extends Controller
         }
         return redirect('/users');
     }
+
 }

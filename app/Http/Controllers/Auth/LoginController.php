@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -29,12 +30,13 @@ class LoginController extends Controller
      */
     public function redirectTo() {
         $role = Auth::user()->role_id;
+
         switch ($role) {
             case '1':
-                return '/admin_dashboard';
+                return '/admin-dashboard';
                 break;
             case '2':
-                return '/user_dashboard';
+                return '/user-dashboard';
                 break;
 
             default:
@@ -50,5 +52,6 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
     }
 }

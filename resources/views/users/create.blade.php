@@ -80,11 +80,8 @@
                             </div>
                             <div class="col-4">
                                 <label for="role_select">Role:</label>
-                                <select name="role_id" id="role_select" class="form-control @error('role_id') is-invalid @endif">
-                                    <option value="0" selected>-select a role-</option>
-                                    <option value="1">Administrator</option>
-                                    <option value="2">User</option>
-                                    <option value="3">Support Officer</option>
+                                <select name="role_id" id="role_select" class="form-control @error('role_id') is-invalid @endif" >
+                                    {{-- populated by AJAX function--}}
                                 </select>
                                 @error('role_id')
                                 <div class="invalid-feedback">
@@ -115,4 +112,9 @@
 @endsection
 @section('additional_scripts')
     <script src="{{ asset('js/users/create.js') }}"></script>
+    <script>
+        $(document).ready(() => {
+            fillRoles();
+        });
+    </script>
 @endsection

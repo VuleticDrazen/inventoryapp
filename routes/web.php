@@ -7,8 +7,11 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SerialNumberController;
+use App\Http\Controllers\RoleController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +27,11 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/users', UserController::class);
 Route::get('/positions-by-department/{department}', [DepartmentController::class, 'positions']);
+
+Route::get('/roles', [App\Http\Controllers\RoleController::class, 'roles']);
+
+Route::get('/serial-numbers-by-equipment/{equipment}', [EquipmentController::class, 'serial_numbers']);
+
 Route::resource('/equipment', EquipmentController::class);
 Route::resource('/documents', DocumentController::class);
 Route::post('/document-items/{document}', [DocumentItemController::class, 'store']);
@@ -31,9 +39,9 @@ Route::put('/document-item/return/{document_item}', [DocumentItemController::cla
 Route::resource('/tickets', TicketController::class);
 Route::post('/equipment/{equipment}/serial-numbers', [SerialNumberController::class, 'store'])->name('serial_numbers.store');
 Route::get('/serial-numbers-by-equipment/{equipment}', [EquipmentController::class, 'serial_numbers']);
-Route::get('/admin_dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
-Route::get('/user_dashboard',[App\Http\Controllers\User\DashboardController::class, 'index']);
+
 
 Auth::routes();
+//Route::get('/admin-dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
+//Route::get('/user-dashboard',[App\Http\Controllers\User\DashboardController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

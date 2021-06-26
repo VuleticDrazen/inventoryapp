@@ -97,4 +97,12 @@ class SerialNumberController extends Controller
         }
         return redirect()->route('equipment.show', $equipment->id);
     }
+
+    public function all(Equipment $equipment){
+
+    }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }

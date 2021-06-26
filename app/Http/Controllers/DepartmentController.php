@@ -86,4 +86,8 @@ class DepartmentController extends Controller
     public function positions(Department $department){
         return $department->positions;
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
