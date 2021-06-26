@@ -120,5 +120,8 @@ class UserController extends Controller
         }
         return redirect('/users');
     }
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
